@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Azure Microservices Lab</title>
+</head>
+<body>
+    <h1>Frontend Service</h1>
+    <div id="status">Loading gateway status...</div>
+    <script>
+        // This will be configured in Step 5.5
+        const API_URL = "https://gateway.happyfield-17e4f235.centralindia.azurecontainerapps.io/health";
+        fetch(API_URL)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('status').innerText = "Gateway Status: " + data.status;
+            })
+            .catch(err => {
+                document.getElementById('status').innerText = "Gateway Unreachable";
+            });
+    </script>
+</body>
+</html>
